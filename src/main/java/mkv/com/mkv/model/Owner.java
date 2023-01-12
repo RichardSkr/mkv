@@ -2,6 +2,7 @@ package mkv.com.mkv.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import mkv.com.mkv.DTO.ElevatorDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Owner {
     private Long cin;
     private Long tin;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Elevator> elevators = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "elevator_id")
+    Elevator elevator;
 }

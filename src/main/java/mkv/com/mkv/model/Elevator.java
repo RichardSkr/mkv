@@ -3,7 +3,9 @@ package mkv.com.mkv.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,7 +23,6 @@ public class Elevator {
     private boolean controlRoom;
     private int floors;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
-    Owner owner;
+    @OneToMany(mappedBy = "elevator", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Owner> owners = new ArrayList<>();
 }

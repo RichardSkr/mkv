@@ -2,6 +2,7 @@ package mkv.com.mkv.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import mkv.com.mkv.DTO.ElevatorDTO;
 
 @Data
 @Entity
@@ -22,6 +23,6 @@ public class User {
     private Long tin;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
-    Owner owner;
+    @JoinColumn(name = "elevator_id")
+    Elevator elevator;
 }
