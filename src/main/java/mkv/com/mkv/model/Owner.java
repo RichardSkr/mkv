@@ -25,7 +25,6 @@ public class Owner {
     private Long cin;
     private Long tin;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "elevator_id")
-    Elevator elevator;
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Elevator> elevators = new ArrayList<>();
 }

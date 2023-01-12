@@ -4,15 +4,18 @@ import mkv.com.mkv.DTO.UserDTO;
 import mkv.com.mkv.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
+
     @Override
-    public UserDTO createUser(UserDTO userDTO) {
+    public UserDTO createUser(UserDTO userDTO, long elevatorId) {
         return null;
     }
 
     @Override
-    public UserDTO getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return null;
     }
 

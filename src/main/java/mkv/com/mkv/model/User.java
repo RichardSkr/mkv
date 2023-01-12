@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import mkv.com.mkv.DTO.ElevatorDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 public class User {
@@ -23,6 +26,6 @@ public class User {
     private Long tin;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "elevator_id")
-    Elevator elevator;
+    @JoinColumn(name = "owner_id")
+    Owner owner;
 }

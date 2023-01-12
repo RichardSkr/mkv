@@ -23,6 +23,7 @@ public class Elevator {
     private boolean controlRoom;
     private int floors;
 
-    @OneToMany(mappedBy = "elevator", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Owner> owners = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id")
+    Owner owner;
 }

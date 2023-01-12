@@ -31,7 +31,7 @@ public class ElevatorServiceImpl implements ElevatorService {
         Elevator elevator = toEntity(elevatorDTO);
         Owner owner = ownerRepository.findById(ownerId).orElseThrow(()-> new NotFoundException("Owner not found."));
 
-        elevator.setId(ownerId);
+        elevator.setOwner(owner);
 
         Elevator newElevator = elevatorRepository.save(elevator);
         return toDTO(newElevator);
@@ -114,4 +114,6 @@ public class ElevatorServiceImpl implements ElevatorService {
 
         return elevatorDTO;
     }
+    //In process
+    //Backend app for the digitization of maintenance processes
 }
