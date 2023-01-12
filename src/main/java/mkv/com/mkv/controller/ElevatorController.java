@@ -41,4 +41,11 @@ public class ElevatorController {
                                                       @RequestBody ElevatorDTO elevatorDTO){
         return new ResponseEntity<>(elevatorService.updateElevator(ownerId,elevatorId,elevatorDTO),HttpStatus.OK);
     }
+
+    @DeleteMapping("delete/owner/{ownerId}/elevator/{elevatorId}")
+    public ResponseEntity<String> deleteElevator(@PathVariable(value = "ownerId") long ownerId,
+                                                 @PathVariable(value = "elevatorId") long elevatorId){
+        elevatorService.deleteElevatorById(ownerId,elevatorId);
+        return new ResponseEntity<>("Elevator deleted.", HttpStatus.OK);
+    }
 }

@@ -78,7 +78,13 @@ public class ElevatorServiceImpl implements ElevatorService {
 
     @Override
     public void deleteElevatorById(long ownerId, long elevatorId) {
+        Owner owner = ownerRepository.findById(ownerId).orElseThrow(()-> new NotFoundException("There is no owner of this ID"));
+        Elevator elevator = elevatorRepository.findById(elevatorId).orElseThrow(()-> new NotFoundException("There is no elevator with this ID"));
 
+        if(!Objects.equals(elevator.getOwner().getId(), owner.getId())){
+            throw new NotFoundException("Elevator not found.");
+        }
+        elevatorRepository.delete(elevator);
     }
 
     private Elevator toEntity(ElevatorDTO elevatorDTO){
@@ -108,6 +114,4 @@ public class ElevatorServiceImpl implements ElevatorService {
 
         return elevatorDTO;
     }
-    //In process
-    //Backend app for the digitization of maintenance processes
 }
